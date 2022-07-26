@@ -1,9 +1,6 @@
 module.exports = function toReadable (n) {
-  var string = n.toString(),
+    var string = n.toString(),
         units, tens, scales, start, end, chunks, chunksLen, chunk, ints, i, word, words;
-
-    var and = custom_join_character || 'and';
-
     /* Is number zero? */
     if (parseInt(string) === 0) {
         return 'zero';
@@ -62,17 +59,6 @@ module.exports = function toReadable (n) {
             if ((word = tens[ints[1]])) {
                 words.push(word);
             }
-
-            /* Add 'and' string after units or tens integer if: */
-            if (ints[0] || ints[1]) {
-
-                /* Chunk has a hundreds integer or chunk is the first of multiple chunks */
-                if (ints[2] || !i && chunksLen) {
-                    words.push(and);
-                }
-
-            }
-
             /* Add hundreds word if array item exists */
             if ((word = units[ints[2]])) {
                 words.push(word + ' hundred');
